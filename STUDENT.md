@@ -5,7 +5,7 @@
 - Lớp (L2 / L3 / khác): \<\<L2\>\>
 - Tài khoản GitHub: \<\<phmhienn\>\>
 - Repo bài nộp (URL): \<\<https://github.com/phmhienn/K5-L23-DAY08-2A202603218-PhamTrongHien-AIPrelabel\>\>
-- Commit chốt bài (hash): \<\<Chưa chốt; commit hiện tại là 00fbe1a, cần cập nhật sau khi commit bài hoàn chỉnh.\>\>
+- Commit chốt bài (hash): \<\<384de7c17514b9d588aae3866d1f51668f2c2c9f\>\>
 - Máy: \<\<Windows 11, GPU (CUDA)\>\>
 - CVAT (Docker): \<\<29.2.1\>\>
 
