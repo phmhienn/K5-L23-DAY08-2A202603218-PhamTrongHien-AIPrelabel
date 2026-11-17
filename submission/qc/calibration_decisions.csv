@@ -1,1 +1,4 @@
 case_id,image,nguon,van_de,quyet_dinh,quy_tac_ghi_vao_guideline,phien_ban_guideline
+CAL-01,img_013.jpg,loi_may,YOLO26 gán tuk-tuk thành car,Gán three_wheeler theo đặc điểm xe và kiểm tra riêng người lái,Áp dụng lại mục 2 v1.0; lỗi máy không cần đổi định nghĩa lớp,v1.1
+CAL-02,img_013.jpg,cau_hoi_mo,Confidence cao có đủ để chấp nhận box máy không,Luôn kiểm tra lớp và vị trí box dù confidence cao,Bổ sung mục 6 câu 7: confidence chỉ hỗ trợ lọc box; chấp nhận sau khi kiểm tra ảnh,v1.1
+CAL-03,img_018.jpg,bay_lot,Box lỏng còn lọt sau duyệt,Kiểm tra cả 4 cạnh và chỉnh box sát phần nhìn thấy,Áp dụng lại mục 4.1 v1.0; bổ sung bước kiểm 4 cạnh vào quy trình duyệt,v1.1

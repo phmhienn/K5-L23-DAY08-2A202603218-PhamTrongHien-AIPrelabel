@@ -5,7 +5,9 @@ pillow>=10.0
 opencv-python-headless>=4.9
 matplotlib>=3.8
 pyyaml>=6.0
-ultralytics>=8.4.0      # YOLO26, YOLOE, SAM 2 (cần git để tự cài CLIP cho YOLOE)
+ultralytics>=8.4.0      # YOLO26, YOLOE, SAM 2
+# Bộ mã hoá prompt chữ cho YOLOE
+git+https://github.com/ultralytics/CLIP.git
 torch>=2.2              # cài theo hướng dẫn trong docs/SETUP.md nếu dùng GPU NVIDIA
 torchvision>=0.17
 transformers>=5.0       # Grounding DINO, OWLv2, SAM 3 (tuỳ chọn)

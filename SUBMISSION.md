@@ -4,8 +4,8 @@
 
 Mỗi học viên **một repo public**: fork repo đề, đổi tên theo mẫu.
 
-| Mẫu tên repo | Ví dụ |
-|---|---|
+| Mẫu tên repo                             | Ví dụ                                         |
+| ---------------------------------------- | --------------------------------------------- |
 | `K5-L23-DAY08-[MSHV]-[HoTen]-AIPrelabel` | `K5-L23-DAY08-22001234-NguyenVanA-AIPrelabel` |
 
 `HoTen` không dấu, viết liền. Theo hướng dẫn lớp nếu giảng viên đặt quy ước khác.
@@ -58,7 +58,7 @@ Bài nâng cao (tuỳ chọn) có thể thêm `labels/pilot_reviewed.json`, `lab
 
 ## Checklist trước khi nộp
 
-- [ ] Repo **public**, tên đúng quy tắc, mở được khi chưa đăng nhập.
+- [x] Repo **public**, tên đúng quy tắc, mở được khi chưa đăng nhập.
 - [ ] `README.md` tiêu đề đúng `MSHV - Họ và tên`; `STUDENT.md` điền đủ, kể cả kết quả tóm tắt.
 - [ ] ≥ 4 commit bằng tài khoản của bạn, theo từng Part.
 - [ ] `python scripts/validate_labels.py --all` sạch.

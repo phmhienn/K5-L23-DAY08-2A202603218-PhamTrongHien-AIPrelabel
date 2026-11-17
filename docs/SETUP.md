@@ -59,7 +59,7 @@ python scripts/download_models.py --set sam1     # (tuỳ chọn) SAM 1 bản nh
 
 Máy yếu / chỉ CPU: dùng `--set small` (n-size + SAM 2.1 tiny). Khi đó mọi lệnh có `--size m` đổi thành `--size n`, và `--sam sam2.1_t.pt` (hoặc `mobile_sam.pt` của SAM 1 nếu máy rất yếu).
 
-Trọng số vào thư mục `models/` (không commit; đã có trong `.gitignore`). **YOLOE** lần chạy đầu tải thêm bộ mã hoá chữ (`mobileclip2_b.ts`) vào `models/` và tự cài CLIP từ git nếu máy chưa có `clip`: cần mạng và `git`.
+Trọng số vào thư mục `models/` (không commit; đã có trong `.gitignore`). **YOLOE** cần CLIP từ GitHub, đã khai báo trong `requirements.txt`; sau khi cập nhật repo, chạy `python -m pip install -r requirements.txt` trong venv đang dùng. Lần chạy YOLOE đầu còn tải bộ mã hoá chữ (`mobileclip2_b.ts`) vào `models/`: cả hai bước cần mạng và `git`.
 
 ## 3. Kiểm tra
 
