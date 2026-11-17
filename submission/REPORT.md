@@ -71,9 +71,30 @@ Việc cần làm tiếp: xoá box trùng #14 và chỉnh box #13 ở `img_003.j
 
 ## 8 / 8. Ghi chú cá nhân
 
-- **Dùng AI để làm bài** (công cụ nào, việc gì, kiểm tra thế nào; "không dùng" nếu không): Dùng chatgpt để tìm hiểu các định nghĩa, ý nghĩa các chỉ số đề cập trong bài lab, hỗ trợ chính tả bản report.
+- **Dùng AI để làm bài** (công cụ nào, việc gì, kiểm tra thế nào; "không dùng" nếu không): Dùng ChatGPT/Codex tìm hiểu chỉ số, hỗ trợ viết báo cáo, chạy script và xem ảnh QC/bonus. Số liệu đối chiếu với log và file JSON; nhận xét ảnh do AI hỗ trợ, cần người làm bài xác nhận.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? không
 - Máy / GPU / CVAT dùng; vướng mắc cài đặt: Không
 - Dùng cache `data/cache/` thay vì tự chạy? không
 - Lỗi / bug script đã gặp (nếu có): Thiếu thư viện clip khi chạy yoloe
 - Một điều bạn làm khác lần sau: Sẽ tìm hiểu sâu hơn các chỉ số và định nghĩa
+
+### Bonus — So sánh Grounding DINO, OWLv2 và YOLOE
+
+Dùng lại các lượt đã chạy trên cùng 8 ảnh pilot, thiết bị CPU, chỉ giữ lớp `three_wheeler`. Thời gian lấy từ `run.json` của từng lượt, đã lưu ở `qc/bonus_model_runs.csv`.
+
+| Model | Conf đã chạy | Box/8 ảnh | Giây/ảnh |
+|---|---|---|---|
+| Grounding DINO | 0.30 | 18 | 31,62 |
+| OWLv2 | 0.20 | 44 | 18,79 |
+| YOLOE-26s | 0.25 | 8 | 1,21 |
+
+| Ảnh | Box DINO / OWLv2 / YOLOE | Nhận xét khi xem ảnh |
+|---|---|---|
+| `img_002.jpg` | 2 / 3 / 4 | Cả ba tìm được tuk-tuk xanh chính (1 xe). DINO gán nhầm xe máy bên trái; OWLv2 và YOLOE gán nhầm xe bán tải bên phải. |
+| `img_011.jpg` | 2 / 1 / 1 | DINO gán nhầm hai xe máy thành three_wheeler. OWLv2 và YOLOE đặt box vào xe bị cắt ở mép trái, cần kiểm tra loại xe do thiếu phần nhìn thấy. |
+| `img_016.jpg` | 4 / 1 / 0 | Không thấy xe ba bánh rõ để đối chiếu. DINO gán nhầm taxi và xe máy; OWLv2 gán nhầm xe máy tiền cảnh. YOLOE không tạo box. |
+| `img_032.jpg` | 2 / 13 / 3 | Cả ba tìm được xích lô hoa ở trước và xích lô bên trái. DINO bỏ sót nhóm xe bên phải; YOLOE tìm thêm một xe phải; OWLv2 tạo nhiều box chồng nhau và box trên người. |
+
+- **Quyết định:** giữ YOLOE cho nhãn sơ bộ three_wheeler vì nhanh nhất trong các lượt này và ít box thừa trên `img_016.jpg`. DINO/OWLv2 cung cấp thêm ca đối chiếu nhưng vẫn cần sửa nhãn và box.
+- **Giới hạn:** ngưỡng confidence của ba model khác nhau; các điểm số không so trực tiếp được. Thời gian là từng lượt chạy, chưa đo lặp có warm-up. Nhận xét trên 4 ảnh do AI hỗ trợ xem, chưa có nhãn chuẩn pilot độc lập để tính precision/recall.
+- **Bằng chứng:** `qc/bonus_image_counts.csv` có số box từng ảnh; ba file dự đoán gốc ở `prelabel/bonus/` để vẽ lại và kiểm chứng.

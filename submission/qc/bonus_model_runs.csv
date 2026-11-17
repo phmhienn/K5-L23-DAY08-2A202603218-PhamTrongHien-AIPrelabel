@@ -1,0 +1,4 @@
+"model","params","split","n_boxes","sec_per_img","device","n_images"
+"gdino","--model gdino --classes three_wheeler --split pilot --conf 0.3 --out work/prelabel/gdino_pilot","pilot","18","31.62","cpu","8"
+"owlv2","--model owlv2 --classes three_wheeler --split pilot --conf 0.2 --out work/prelabel/owlv2_pilot","pilot","44","18.79","cpu","8"
+"yoloe-s","--model yoloe --classes three_wheeler --split pilot --conf 0.25 --out work/prelabel/t_yoloe","pilot","8","1.21","cpu","8"
