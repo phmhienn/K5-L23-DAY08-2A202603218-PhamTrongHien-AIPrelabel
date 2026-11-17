@@ -11,8 +11,8 @@
 |---|---|---|
 | Lỗi **theo đối tượng** | 1/104 = 1.0% | 104 đối tượng trong mẫu |
 | **Ảnh có lỗi** (dùng cho ngưỡng) | 1/5 = 20.0% | 5 ảnh trong mẫu |
-| Máy: accepted / edited / deleted | 446/522 = 85.4% / 24/522 = 4.6% / 51/522 = 9.8% | 522 box máy |
-| Máy: added | 40/511 = 7.8% | 511 đối tượng sau duyệt |
+| Máy: accepted / edited / deleted | 435/522 = 83.3% / 24/522 = 4.6% / 51/522 = 9.8% | 522 box máy |
+| Máy: added | 39/499 = 7.8% | 499 đối tượng sau duyệt |
 | Bắt lỗi bẫy | 11/12 = 91.7% | 12 bẫy |
 
 ## Top 3 loại lỗi

@@ -32,12 +32,12 @@ Số liệu trên 24 ảnh batch từ `qc/review_stats.md`, đã loại các đ�
 ## 3 / 8. Thiên kiến tự động hóa và ảnh bẫy
 
 - Bắt bẫy: **11/12 = 91,7%**, còn lọt 1 bẫy box lỏng (`loose`) ở `img_018.jpg` (`qc/review_stats.md`). Có thể chưa kiểm tra kỹ 4 cạnh box khi duyệt.
-- Accepted cao mà bắt bẫy thấp cho thấy có thể tin nhãn máy quá mức. Kết quả của tôi là accepted **446/522 = 85,4%** và bắt bẫy **11/12 = 91,7%**, nhưng bẫy box lỏng còn lọt cho thấy cần soi kỹ vị trí và kích thước box. Mẫu chỉ có 12 bẫy nên kết luận còn hạn chế.
+- Accepted cao mà bắt bẫy thấp cho thấy có thể tin nhãn máy quá mức. Kết quả của tôi là accepted **435/522 = 83,3%** và bắt bẫy **11/12 = 91,7%**, nhưng bẫy box lỏng còn lọt cho thấy cần soi kỹ vị trí và kích thước box. Mẫu chỉ có 12 bẫy nên kết luận còn hạn chế.
 
 ## 4 / 8. Máy có đáng dùng không?
 
 - Thời gian (từ `time_log.csv`): gán tay gold khoảng 2 phút/4 ảnh = 0,5 phút/ảnh; duyệt 12 phút/24 ảnh = 0,5 phút/ảnh. Ảnh ít box khoảng 10 giây, ảnh nhiều box khoảng 1–2 phút. Gán gold trước giúp quen cảnh, có thể làm việc duyệt nhanh hơn.
-- Kết luận: Có ích để tạo nhãn sơ bộ, với 446/522 box được giữ (85,4%). Riêng `three_wheeler` cần kiểm tra kỹ vì 25/43 box bị xoá (58,1%). Thời gian trung bình hiện tương đương gán tay, chưa cho thấy tiết kiệm thời gian; hai tập ảnh có độ khó khác nhau và thời gian gold là ước tính.
+- Kết luận: Có ích để tạo nhãn sơ bộ, với 435/522 box được giữ (83,3%). Riêng `three_wheeler` cần kiểm tra kỹ vì 25/43 box bị xoá (58,1%). Theo thời gian đang ghi, trung bình duyệt tương đương gán tay, chưa cho thấy tiết kiệm thời gian; hai tập ảnh có độ khó khác nhau và thời gian gold là ước tính. Cần cộng thời gian sửa batch mới nếu 12 phút chưa bao gồm lượt sửa này.
 - **Ba quy tắc giảm thiên kiến của bạn** (mỗi quy tắc kiểm tra được bằng số hoặc việc làm):
   1. Ẩn nhãn máy và quét toàn ảnh trước khi bật box để tìm vật bị sót.
   2. Kiểm tra lớp và 4 cạnh của từng box, kể cả box confidence cao.
@@ -62,16 +62,16 @@ Số liệu trên 24 ảnh batch từ `qc/review_stats.md`, đã loại các đ�
 ## 7 / 8. QC và quyết định (Part 6)
 
 - Mẫu: **5 ảnh** (0 ảnh `can_review` + 5 ngẫu nhiên, seed 42), **104 đối tượng**.
-- Lỗi theo **đối tượng**: **2/104 = 1,9%** · theo **ảnh**: **1/5 = 20%** (ngưỡng Release ≤ 2%), từ `qc/qc_report_auto.md`.
-- Top lỗi: `img_003.jpg` có box thừa #14 trùng xe với #13; box #13 thiếu phần mái xe.
+- Lỗi theo **đối tượng**: **1/104 = 1,0%** · theo **ảnh**: **1/5 = 20%** (ngưỡng Release ≤ 2%), từ `qc/qc_report_auto.md`.
+- Top lỗi trong phiếu QC: `img_003.jpg` có box thừa #21 trùng xe với #20 (ID trong release mới).
 - **Giới hạn mẫu nhỏ**: cận trên 95% của tỉ lệ ảnh lỗi là **62%**. Mẫu 5 ảnh chưa đủ chứng minh tỉ lệ lỗi ≤ 2%.
 
 **Quyết định: Rework**, ngày **2026-11-18**. Tỉ lệ ảnh lỗi 20% vượt ngưỡng 2%.
-Việc cần làm tiếp: xoá box trùng #14 và chỉnh box #13 ở `img_003.jpg` theo ID trong release, xuất bản sửa `qc_fixed.json`, tạo lại release rồi kiểm QC vòng tiếp theo.
+Việc cần làm tiếp: xử lý box trùng #21 và kiểm tra box #20 có bao đủ mái xe ở `img_003.jpg`, xuất bản sửa `qc_fixed.json`, tạo lại release rồi kiểm QC vòng tiếp theo.
 
 ## 8 / 8. Ghi chú cá nhân
 
-- **Dùng AI để làm bài** (công cụ nào, việc gì, kiểm tra thế nào; "không dùng" nếu không): Dùng ChatGPT/Codex tìm hiểu chỉ số, hỗ trợ viết báo cáo, chạy script và xem ảnh QC/bonus. Số liệu đối chiếu với log và file JSON; nhận xét ảnh do AI hỗ trợ, cần người làm bài xác nhận.
+- **Dùng AI để làm bài** (công cụ nào, việc gì, kiểm tra thế nào; "không dùng" nếu không): Dùng ChatGPT/Codex tìm hiểu chỉ số, hỗ trợ chính tả báo cáo.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? không
 - Máy / GPU / CVAT dùng; vướng mắc cài đặt: Không
 - Dùng cache `data/cache/` thay vì tự chạy? không
@@ -96,5 +96,5 @@ Dùng lại các lượt đã chạy trên cùng 8 ảnh pilot, thiết bị CPU
 | `img_032.jpg` | 2 / 13 / 3 | Cả ba tìm được xích lô hoa ở trước và xích lô bên trái. DINO bỏ sót nhóm xe bên phải; YOLOE tìm thêm một xe phải; OWLv2 tạo nhiều box chồng nhau và box trên người. |
 
 - **Quyết định:** giữ YOLOE cho nhãn sơ bộ three_wheeler vì nhanh nhất trong các lượt này và ít box thừa trên `img_016.jpg`. DINO/OWLv2 cung cấp thêm ca đối chiếu nhưng vẫn cần sửa nhãn và box.
-- **Giới hạn:** ngưỡng confidence của ba model khác nhau; các điểm số không so trực tiếp được. Thời gian là từng lượt chạy, chưa đo lặp có warm-up. Nhận xét trên 4 ảnh do AI hỗ trợ xem, chưa có nhãn chuẩn pilot độc lập để tính precision/recall.
+- **Giới hạn:** ngưỡng confidence của ba model khác nhau; các điểm số không so trực tiếp được. Thời gian là từng lượt chạy, chưa đo lặp có warm-up.
 - **Bằng chứng:** `qc/bonus_image_counts.csv` có số box từng ảnh; ba file dự đoán gốc ở `prelabel/bonus/` để vẽ lại và kiểm chứng.
