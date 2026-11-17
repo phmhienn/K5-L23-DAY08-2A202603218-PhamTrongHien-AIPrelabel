@@ -21,10 +21,10 @@ Số liệu trên 24 ảnh batch từ `qc/review_stats.md`, đã loại các đ�
 
 | Trạng thái | Số  | Tỉ lệ           | Mẫu số                  |
 | ---------- | --- | --------------- | ----------------------- |
-| accepted   | 446 | 446/522 = 85,4% | 522 box máy             |
+| accepted   | 435 | 435/522 = 83,3% | 522 box máy             |
 | edited     | 24  | 24/522 = 4,6%   | 522 box máy             |
 | deleted    | 51  | 51/522 = 9,8%   | 522 box máy             |
-| added      | 40  | 40/511 = 7,8%   | 511 đối tượng sau duyệt |
+| added      | 39  | 39/499 = 7,8%   | 499 đối tượng sau duyệt |
 
 - Lớp nào máy tệ nhất? Vì sao (dẫn ảnh)? `three_wheeler` bị xoá nhiều nhất, 25/43 box (58,1%). Ở `img_013.jpg`, máy tạo box trùng trên tuk-tuk và gán nhầm xe buýt thành three_wheeler.
 - So với gold: precision của **máy** = **38/71 = 53,5%**, recall = **38/50 = 76,0%** (50 đối tượng trên 4 ảnh gold). Số đo có thể lạc quan vì chọn và chấm ngưỡng trên cùng tập gold.
